@@ -6,14 +6,16 @@ import HomePage from './components/HomePage';
 import QuestionPage from './components/QuestionPage';
 import ResultsPage from './components/ResultsPage';
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import gql from 'graphql-tag';
 
-const client = new ApolloClient({ uri: 'https://nx9zvp49q7.lp.gql.zone/graphql' });
+const client = new ApolloClient({ uri: 'https://assessment.staging.enterprisegrade.io/graphql' })
 
 const ApolloApp = () => (
   <ApolloProvider client={client}>
     <Router>
       <div>
         <Route path="/" exact component={HomePage} />
+        <Route path="/assessment/:assessmentId/" exact component={QuestionPage} />
         <Route path="/assessment/:assessmentId/question/:questionId" exact component={QuestionPage} />
         <Route path="/assessment/:assessmentId/results" exact component={ResultsPage} />
       </div>
