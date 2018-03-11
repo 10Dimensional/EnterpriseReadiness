@@ -74,29 +74,48 @@ class ResultsPage extends Component {
             <p> Select a category below to get a more detailed view of your scores, as well as
           next steps on becoming more EnterpriseReady. </p>
 
-            <div> List of images </div>
+            <div>
+              {questions.map((question, index) => {
+                const selectedChoice = question.choices.find(c => c.isSelected)
+                return (
+                  <div className='second-box'>
+                    <div className='box-heading'>{question.text === 'Role-based Access Control' ? 'Role-based AC' :
+                      question.text}</div>
+                    <div className='imgBox'>
+                      <div className='categoryBoxImg'> </div>
+                      <span className={'score-' + scoreLabel(choicePointScore(selectedChoice))}>
+                        {scoreLabel(choicePointScore(selectedChoice))} 
+                      </span>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
           </div>
           <hr />
           <div className='individual-result'>
             <Media>
-            {questions.map((question, index) => {
-              const selectedChoice = question.choices.find(c => c.isSelected)
-              return (
-                <div>
-              <Media.Left>
-                <img width={64} height={64} src="/thumbnail.png" alt="thumbnail" />
-              </Media.Left>
-              <Media.Body>
-                <Media.Heading>
-                <p className='question-text'>{question.text} <span>{scoreLabel(choicePointScore(selectedChoice))} </span></p>
-                </Media.Heading>
-                <p className='answer'> Your answer: </p>
-                <p className='answer'>{selectedChoice.text} </p>
-                <p className='recommendation'>{selectedChoice.recommendation}</p>
+              {questions.map((question, index) => {
+                const selectedChoice = question.choices.find(c => c.isSelected)
+                return (
+                  <div>
+                    <Media.Left>
+                        <div className='categoryImg'/>
+                    </Media.Left>
+                    <Media.Body>
+                      <Media.Heading>
+                        <p className='question-text'>
+                          {question.text} 
+                          <span className={'circle-score-' + scoreLabel(choicePointScore(selectedChoice))}>{scoreLabel(choicePointScore(selectedChoice))}</span>
+                        </p>
+                      </Media.Heading>
+                      <p className='answer'> Your answer: </p>
+                      <p className='answer'>{selectedChoice.text} </p>
+                      <p className='recommendation'>{selectedChoice.recommendation}</p>
 
-              </Media.Body>
-              </div>
-              )
+                    </Media.Body>
+                  </div>
+                )
               })}
             </Media>
           </div>
@@ -105,8 +124,8 @@ class ResultsPage extends Component {
     } else {
       return (
         <div className='loading-page' >
-          Loading...
-      </div>
+
+        </div>
       )
     }
   }

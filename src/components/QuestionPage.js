@@ -79,27 +79,40 @@ class QuestionPage extends Component {
         return (
           <div className='question-page' >
             <div className='question-box'>
+              <div className='questionImg'> </div>
               <h2>{questions[this.state.questionIndex].text}</h2>
               <p> {questions[this.state.questionIndex].description}</p>
               <p className='question'> {questions[this.state.questionIndex].question}</p>
               <ListGroup>
                 {questions[this.state.questionIndex].choices.map((choice, index) => {
-                const className = (choice.id === this.state.selectedChoice) ? 'selected' : '' ;
+                  const className = (choice.id === this.state.selectedChoice) ? 'selected' : '';
                   return (
                     <ListGroupItem
                       className={className}
                       key={index}
                       onClick={() => this.selectChoice(choice.id)}>
-                      <span className='number'> {index+1} </span>
-                      <span>{choice.text}</span>
+                      <div className='row'>
+                        <div className='col-md-1'>
+                          <span className='number'>{index + 1} </span>
+                        </div>
+                        <div class='col-md-11'>{choice.text}</div>
+                      </div>
                     </ListGroupItem>
                   )
 
                 })}
               </ListGroup>
               <div>
-                {this.state.questionIndex > 0 && <a className='prev' onClick={this.onPreviousClick}>Previous</a>}
-                <a className='next' onClick={this.onNextClick}>Next</a>
+                {this.state.questionIndex > 0 &&
+                  <a className='prev' onClick={this.onPreviousClick}>
+                    <span className='prevIcon glyphicon glyphicon-chevron-left'></span>
+                    <span>Previous</span>
+                  </a>
+                }
+                <a className='next' onClick={this.onNextClick}>
+                  <span>Next</span>
+                  <span className='nextIcon glyphicon glyphicon-chevron-right'></span>
+                </a>
               </div>
             </div>
           </div>
@@ -112,7 +125,6 @@ class QuestionPage extends Component {
     } else {
       return (
         <div className='loading-page' >
-          Loading...
         </div>
       )
     }
