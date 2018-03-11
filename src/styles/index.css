@@ -370,9 +370,10 @@ button.list-group-item:hover {
 .loading-page {
   display: block;
   margin: 0 auto;
+  margin-top: 300px;
   border: 16px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid #4A90E2;
+  border-top: 16px solid #EE5042;
   width: 120px;
   height: 120px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
