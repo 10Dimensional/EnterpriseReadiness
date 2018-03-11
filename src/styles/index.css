@@ -171,7 +171,7 @@ button.list-group-item:hover {
 
 .results-page {
   text-align: center;
-  max-width: 900px;
+  max-width: 1000px;
   display:block;
   margin: 0 auto;
 }
@@ -212,7 +212,7 @@ button.list-group-item:hover {
 }
 
 .container-second {
-  max-width: 900px;
+  max-width: 1000px;
   display: block;
   margin: 0 auto;
 }
@@ -258,6 +258,7 @@ button.list-group-item:hover {
   margin-top: 150px;
   font-size: 32px;
   font-weight: 700;
+  text-align:center;
 }
 
 .container-second p {
@@ -266,7 +267,6 @@ button.list-group-item:hover {
   line-height: 1.4;
   font-size: 18px;
 }
-
 
 .categoryImg {
   background: url('./images/category.png') right center no-repeat;
@@ -278,7 +278,7 @@ button.list-group-item:hover {
 }
 
 .individual-result {
-  max-width: 900px;
+  max-width: 1000px;
   display: block;
   margin: 0 auto;
 }
@@ -308,6 +308,20 @@ button.list-group-item:hover {
   margin-right:12px;
   padding: 5px;
   margin-left: 10px;
+}
+
+.ov-text span {
+  float: right;
+  position: relative;
+  width: 82px;
+  height: 82px;
+  color: white;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: bold;
 }
 
 .score-A {

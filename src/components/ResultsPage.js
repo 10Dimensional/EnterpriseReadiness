@@ -28,11 +28,27 @@ function choicePointScore(choice) {
   return choice.id.charCodeAt(choice.id.length - 1) - 'a'.charCodeAt(0) + 1;
 }
 
+
+
 function scoreLabel(score) {
   return String.fromCharCode('A'.charCodeAt(0) + 4 - score);
 }
 
+
 class ResultsPage extends Component {
+
+  finalScore = () => {
+    const questions = this.props.data.assessment.questions;
+    let sum = 0;
+
+    for (let i = 0; i < questions.length; i++) {
+      const selectedChoice = questions[i].choices.find(c => c.isSelected)
+      sum += choicePointScore(selectedChoice)
+    }
+
+    return Math.floor(sum / questions.length)
+  }
+
   render() {
     if (!this.props.data.loading) {
       const questions = this.props.data.assessment.questions;
@@ -54,6 +70,7 @@ class ResultsPage extends Component {
                     key: 'res',
                     values: questions.reduce((result, question) => {
                       const selectedChoice = question.choices.find(c => c.isSelected)
+                      console.log(choicePointScore(selectedChoice))
                       return Object.assign(result, { [question.id]: choicePointScore(selectedChoice) })
                     }, {})
                   }]
@@ -62,7 +79,12 @@ class ResultsPage extends Component {
             </div>
 
             <div className='ov-text'>
-              <h1> Here is your EnterpriseGrade </h1>
+              <div>
+              <span className={'circle-score-' + scoreLabel(this.finalScore())}> {scoreLabel(this.finalScore())} </span>
+                <h1> Here is your EnterpriseGrade </h1>
+              
+              </div>
+
               <p className='first'> Awesome! You’re already taking important steps toward becoming EnterpriseReady </p>
               <p className='second'> Below you'll find the details of your results, as well as a few suggestions for what
           the next steps you can take to be enterprise ready are. </p>
@@ -84,7 +106,7 @@ class ResultsPage extends Component {
                     <div className='imgBox'>
                       <div className='categoryBoxImg'> </div>
                       <span className={'score-' + scoreLabel(choicePointScore(selectedChoice))}>
-                        {scoreLabel(choicePointScore(selectedChoice))} 
+                        {scoreLabel(choicePointScore(selectedChoice))}
                       </span>
                     </div>
                   </div>
@@ -100,12 +122,12 @@ class ResultsPage extends Component {
                 return (
                   <div key={question.id}>
                     <Media.Left>
-                        <div className='categoryImg'/>
+                      <div className='categoryImg' />
                     </Media.Left>
                     <Media.Body>
                       <Media.Heading>
                         <p className='question-text'>
-                          {question.text} 
+                          {question.text}
                           <span className={'circle-score-' + scoreLabel(choicePointScore(selectedChoice))}>{scoreLabel(choicePointScore(selectedChoice))}</span>
                         </p>
                       </Media.Heading>
