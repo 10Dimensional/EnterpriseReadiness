@@ -23,7 +23,7 @@ const assessment = gql`
   }
   `
 
-  const updateAssessment = gql`
+const updateAssessment = gql`
   mutation updateAssessment($assessmentId: String!, $questionId: String!, $selectedChoiceId: String!) {
     updateAssessment(assessmentId: $assessmentId, questionId: $questionId, selectedChoiceId: $selectedChoiceId) {
       id
@@ -55,14 +55,14 @@ class QuestionPage extends Component {
       this.props.mutate({
         variables: { assessmentId, questionId, selectedChoiceId: this.state.selectedChoice }
       })
-      .then(({ data }) => {
-        this.setState(prevState => {
-          return {
-            questionIndex: prevState.questionIndex + 1,
-            selectChoice: null
-          };
+        .then(({ data }) => {
+          this.setState(prevState => {
+            return {
+              questionIndex: prevState.questionIndex + 1,
+              selectChoice: null
+            };
+          })
         })
-      })
     }
   }
 
@@ -78,24 +78,29 @@ class QuestionPage extends Component {
       if (this.state.questionIndex < questions.length) {
         return (
           <div className='question-page' >
-            <h2>{questions[this.state.questionIndex].text}</h2>
-            <div> {questions[this.state.questionIndex].description}</div>
-            <h3> {questions[this.state.questionIndex].question}</h3>
-            <ListGroup>
-              {questions[this.state.questionIndex].choices.map((choice, index) => {
-                return (
-                  <ListGroupItem
-                    key={index}
-                    onClick={() => this.selectChoice(choice.id)}>
-                    {choice.text}
-                  </ListGroupItem>
-                )
+            <div className='question-box'>
+              <h2>{questions[this.state.questionIndex].text}</h2>
+              <p> {questions[this.state.questionIndex].description}</p>
+              <p className='question'> {questions[this.state.questionIndex].question}</p>
+              <ListGroup>
+                {questions[this.state.questionIndex].choices.map((choice, index) => {
+                const className = (choice.id === this.state.selectedChoice) ? 'selected' : '' ;
+                  return (
+                    <ListGroupItem
+                      className={className}
+                      key={index}
+                      onClick={() => this.selectChoice(choice.id)}>
+                      <span className='number'> {index+1} </span>
+                      <span>{choice.text}</span>
+                    </ListGroupItem>
+                  )
 
-              })}
-            </ListGroup>
-            <div>
-              {this.state.questionIndex > 0 && <button onClick={this.onPreviousClick}>Previous</button>}
-              <button onClick={this.onNextClick}>Next</button>
+                })}
+              </ListGroup>
+              <div>
+                {this.state.questionIndex > 0 && <a className='prev' onClick={this.onPreviousClick}>Previous</a>}
+                <a className='next' onClick={this.onNextClick}>Next</a>
+              </div>
             </div>
           </div>
         )

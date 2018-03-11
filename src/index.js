@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import './styles/index.css'
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import HomePage from './components/HomePage';
