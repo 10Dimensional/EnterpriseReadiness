@@ -43,7 +43,8 @@ class QuestionPage extends Component {
   onPreviousClick = () => {
     this.setState(prevState => {
       return {
-        questionIndex: prevState.questionIndex - 1
+        questionIndex: prevState.questionIndex - 1,
+        selectedChoice: null
       };
     })
   }
@@ -59,7 +60,7 @@ class QuestionPage extends Component {
           this.setState(prevState => {
             return {
               questionIndex: prevState.questionIndex + 1,
-              selectChoice: null
+              selectedChoice: null
             };
           })
         })
@@ -95,7 +96,7 @@ class QuestionPage extends Component {
                         <div className='col-md-1'>
                           <span className='number'>{index + 1} </span>
                         </div>
-                        <div class='col-md-11'>{choice.text}</div>
+                        <div className='col-md-11'>{choice.text}</div>
                       </div>
                     </ListGroupItem>
                   )
@@ -110,7 +111,7 @@ class QuestionPage extends Component {
                   </a>
                 }
                 <a className='next' onClick={this.onNextClick}>
-                  <span>Next</span>
+                  <span> {this.state.questionIndex < questions.length - 1 ? 'Next' : 'See Results'} </span>
                   <span className='nextIcon glyphicon glyphicon-chevron-right'></span>
                 </a>
               </div>

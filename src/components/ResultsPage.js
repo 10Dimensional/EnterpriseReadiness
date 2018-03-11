@@ -29,7 +29,7 @@ function choicePointScore(choice) {
 }
 
 function scoreLabel(score) {
-  return String.fromCharCode('A'.charCodeAt(0) + (score - 1));
+  return String.fromCharCode('A'.charCodeAt(0) + 4 - score);
 }
 
 class ResultsPage extends Component {
@@ -78,7 +78,7 @@ class ResultsPage extends Component {
               {questions.map((question, index) => {
                 const selectedChoice = question.choices.find(c => c.isSelected)
                 return (
-                  <div className='second-box'>
+                  <div className='second-box' key={question.id}>
                     <div className='box-heading'>{question.text === 'Role-based Access Control' ? 'Role-based AC' :
                       question.text}</div>
                     <div className='imgBox'>
@@ -98,7 +98,7 @@ class ResultsPage extends Component {
               {questions.map((question, index) => {
                 const selectedChoice = question.choices.find(c => c.isSelected)
                 return (
-                  <div>
+                  <div key={question.id}>
                     <Media.Left>
                         <div className='categoryImg'/>
                     </Media.Left>
