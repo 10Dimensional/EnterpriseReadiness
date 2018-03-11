@@ -88,7 +88,7 @@ class ResultsPage extends Component {
               </Media.Left>
               <Media.Body>
                 <Media.Heading>
-                <p className='question-text'>{question.text} {scoreLabel(choicePointScore(selectedChoice))}</p>
+                <p className='question-text'>{question.text} <span>{scoreLabel(choicePointScore(selectedChoice))} </span></p>
                 </Media.Heading>
                 <p className='answer'> Your answer: </p>
                 <p className='answer'>{selectedChoice.text} </p>
