@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Redirect } from "react-router-dom";
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
 const assessment = gql`
   query assessment($assessmentId: String!) {
@@ -26,7 +27,8 @@ class QuestionPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      questionIndex: 0
+      questionIndex: 0,
+      selectedChoice: null
     }
   }
 
@@ -39,11 +41,17 @@ class QuestionPage extends Component {
   }
 
   onNextClick = () => {
-    this.setState(prevState => {
-      return {
-        questionIndex: prevState.questionIndex + 1
-      };
-    })
+    if (this.state.selectedChoice) {
+      this.setState(prevState => {
+        return {
+          questionIndex: prevState.questionIndex + 1
+        };
+      })
+    }
+  }
+
+  selectChoice = (id) => {
+    this.setState({ selectedChoice: id })
   }
 
   render() {
@@ -57,18 +65,23 @@ class QuestionPage extends Component {
             <h2>{questions[this.state.questionIndex].text}</h2>
             <div> {questions[this.state.questionIndex].description}</div>
             <h3> {questions[this.state.questionIndex].question}</h3>
-            <ul>
+            <ListGroup>
               {questions[this.state.questionIndex].choices.map((choice, index) => {
-                return <li key={index}> {choice.text} </li>
+                return (
+                  <ListGroupItem
+                    key={index}
+                    onClick={() => this.selectChoice(choice.id)}>
+                    {choice.text}
+                  </ListGroupItem>
+                )
+
               })}
-            </ul>
+            </ListGroup>
             <div>
               {this.state.questionIndex > 0 && <button onClick={this.onPreviousClick}>Previous</button>}
               <button onClick={this.onNextClick}>Next</button>
             </div>
-            
           </div>
-
         )
       } else {
         return (
