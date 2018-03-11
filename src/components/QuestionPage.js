@@ -23,6 +23,14 @@ const assessment = gql`
   }
   `
 
+  const updateAssessment = gql`
+  mutation updateAssessment($assessmentId: String!, $questionId: String!, $selectedChoiceId: String!) {
+    updateAssessment(assessmentId: $assessmentId, questionId: $questionId, selectedChoiceId: $selectedChoiceId) {
+      id
+    }
+  }
+`
+
 class QuestionPage extends Component {
   constructor(props) {
     super(props)
@@ -41,11 +49,19 @@ class QuestionPage extends Component {
   }
 
   onNextClick = () => {
+    const assessmentId = this.props.match.params.assessmentId
+    const questionId = this.props.data.assessment.questions[this.state.questionIndex].id
     if (this.state.selectedChoice) {
-      this.setState(prevState => {
-        return {
-          questionIndex: prevState.questionIndex + 1
-        };
+      this.props.mutate({
+        variables: { assessmentId, questionId, selectedChoiceId: this.state.selectedChoice }
+      })
+      .then(({ data }) => {
+        this.setState(prevState => {
+          return {
+            questionIndex: prevState.questionIndex + 1,
+            selectChoice: null
+          };
+        })
       })
     }
   }
@@ -98,7 +114,7 @@ class QuestionPage extends Component {
   }
 }
 
-export default graphql(assessment, {
+export default graphql(updateAssessment)(graphql(assessment, {
   options: props => ({ variables: { assessmentId: props.match.params.assessmentId } }),
-})(QuestionPage);
+})(QuestionPage));
 
