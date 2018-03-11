@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import Radar from 'react-d3-radar';
 
 const assessment = gql`
   query assessment($assessmentId: String!) {
@@ -22,6 +23,14 @@ const assessment = gql`
   }
   `
 
+function choicePointScore(choice) {
+  return choice.id.charCodeAt(choice.id.length - 1) - 'a'.charCodeAt(0) + 1;
+}
+
+function scoreLabel(score) {
+  return String.fromCharCode('A'.charCodeAt(0) + (score - 1));
+}
+
 class ResultsPage extends Component {
   render() {
     if (!this.props.data.loading) {
@@ -30,6 +39,27 @@ class ResultsPage extends Component {
 
       return (
         <div className='results-page'>
+            <Radar
+              width={600}
+              height={600}
+              padding={70}
+              domainMax={4}
+              highlighted={null}
+              data={{
+                variables: questions.map((question,index) => {
+                  return { key: question.id, label: question.text }
+                }),
+                sets: [{
+                  key: 'res',
+                  values: questions.reduce((result, question) => {
+                    const selectedChoice = question.choices.find(c => c.isSelected)
+                    return Object.assign(result, { [question.id]: choicePointScore(selectedChoice) })
+                  }, {})
+                }]
+              }}
+            />
+       
+
           <h1> Here is your EnterpriseGrade </h1>
           <h3> Awesome! You’re already taking important steps toward becoming EnterpriseReady </h3>
           <h3> Below you'll find the details of your results, as well as a few suggestions for what
@@ -43,29 +73,18 @@ class ResultsPage extends Component {
           <hr />
           <div>
             {questions.map((question, index) => {
+              const selectedChoice = question.choices.find(c => c.isSelected)
               return (
                 <div key={index}>
-                  <h2>{question.text}</h2>
-
-                  {question.choices.map((choice, index) => {
-                    if (choice.isSelected)
-                      return (
-                        <div key={index}>
-                          <p> Your answer: {choice.text} </p>
-                          <p> {choice.recommendation} </p>
-                        </div>
-                      )
-                  })}
-
-
+                  <h2>{question.text} {scoreLabel(choicePointScore(selectedChoice))}</h2>
+                  <div key={index}>
+                    <p> Your answer: {selectedChoice.text} </p>
+                    <p> {selectedChoice.recommendation} </p>
+                  </div>
                 </div>
               )
-            }
-            )}
-
-
+            })}
           </div>
-
         </div>
       )
     } else {
