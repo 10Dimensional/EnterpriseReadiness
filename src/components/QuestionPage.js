@@ -3,6 +3,8 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Redirect } from "react-router-dom";
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import Header from './Header'
+import Footer from './Footer'
 
 const assessment = gql`
   query assessment($assessmentId: String!) {
@@ -78,6 +80,8 @@ class QuestionPage extends Component {
 
       if (this.state.questionIndex < questions.length) {
         return (
+          <div>
+            <Header />
           <div className='question-page' >
             <div className='question-box'>
               <div className='questionImg'> </div>
@@ -116,6 +120,8 @@ class QuestionPage extends Component {
                 </a>
               </div>
             </div>
+          </div>
+          <Footer />
           </div>
         )
       } else {
