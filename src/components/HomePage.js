@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import { Redirect } from "react-router-dom";
-import Header from './Header'
-import Footer from './Footer'
-
 
 const prepareAssessment = gql`
   mutation prepareAssessment {
@@ -30,20 +27,12 @@ class HomePage extends Component {
   render() {
     if (!this.state.assessmentId) {
       return (
-        <div>
-          <Header />
-          <div className='content'>
             <div className='home-page' >
-              <div className='home-page-box'>
                 <div className='home-image'> </div>
                 <h1>Is your app EnterpriseReady?</h1>
                 <p> Take this self assessment to see how ready your application is for enterprise adoption.</p>
                 <button onClick={this.onTakeAssesmentClick}>Take Assessment</button>
               </div>
-            </div>
-          </div>
-          <Footer />
-        </div>
       )
     } else {
       return (

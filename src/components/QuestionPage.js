@@ -3,8 +3,6 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Redirect } from "react-router-dom";
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
-import Header from './Header'
-import Footer from './Footer'
 
 const assessment = gql`
   query assessment($assessmentId: String!) {
@@ -73,8 +71,6 @@ class QuestionPage extends Component {
     this.setState({ selectedChoice: id })
   }
 
-
-
   render() {
     const assesmentId = this.props.match.params.assessmentId
     if (!this.props.data.loading) {
@@ -83,51 +79,44 @@ class QuestionPage extends Component {
 
       if (this.state.questionIndex < questions.length) {
         return (
-          <div>
-            <Header />
-            <div className='content'>
-              <div className='question-page' >
-                <div className='question-box'>
+          <div className='question-page' >
+            <div className='question-box'>
 
-                  <div className={'question-img question-id-' + question.id}> </div>
-                  <h2>{question.text}</h2>
-                  <p> {question.description}</p>
-                  <p className='question'> {question.question}</p>
-                  <ListGroup>
-                    {question.choices.map((choice, index) => {
-                      const className = (choice.id === this.state.selectedChoice) ? 'selected' : '';
-                      return (
-                        <ListGroupItem
-                          className={className}
-                          key={index}
-                          onClick={() => this.selectChoice(choice.id)}>
-                          <div className='row'>
-                            <div className='col-md-1'>
-                              <span className='number'>{index + 1} </span>
-                            </div>
-                            <div className='col-md-11'>{choice.text}</div>
-                          </div>
-                        </ListGroupItem>
-                      )
-
-                    })}
-                  </ListGroup>
-                  <div>
-                    {this.state.questionIndex > 0 &&
-                      <a className='question-previous' onClick={this.onPreviousClick}>
-                        <span className='prev-icon glyphicon glyphicon-chevron-left'></span>
-                        <span>Previous</span>
-                      </a>
-                    }
-                    <a className='question-next' onClick={this.onNextClick}>
-                      <span> {this.state.questionIndex < questions.length - 1 ? 'Next' : 'See Results'} </span>
-                      <span className='next-icon glyphicon glyphicon-chevron-right'></span>
-                    </a>
-                  </div>
-                </div>
+              <div className={'question-img question-id-' + question.id}> </div>
+              <h2>{question.text}</h2>
+              <p> {question.description}</p>
+              <p className='question'> {question.question}</p>
+              <ListGroup>
+                {question.choices.map((choice, index) => {
+                  const className = (choice.id === this.state.selectedChoice) ? 'selected' : '';
+                  return (
+                    <ListGroupItem
+                      className={className}
+                      key={index}
+                      onClick={() => this.selectChoice(choice.id)}>
+                      <div className='row'>
+                        <div className='col-md-1'>
+                          <span className='number'>{index + 1} </span>
+                        </div>
+                        <div className='col-md-11'>{choice.text}</div>
+                      </div>
+                    </ListGroupItem>
+                  )
+                })}
+              </ListGroup>
+              <div>
+                {this.state.questionIndex > 0 &&
+                  <a className='question-previous' onClick={this.onPreviousClick}>
+                    <span className='prev-icon glyphicon glyphicon-chevron-left'></span>
+                    <span>Previous</span>
+                  </a>
+                }
+                <a className='question-next' onClick={this.onNextClick}>
+                  <span> {this.state.questionIndex < questions.length - 1 ? 'Next' : 'See Results'} </span>
+                  <span className='next-icon glyphicon glyphicon-chevron-right'></span>
+                </a>
               </div>
             </div>
-            <Footer />
           </div>
         )
       } else {
@@ -138,6 +127,8 @@ class QuestionPage extends Component {
     } else {
       return (
         <div className='loading-page' >
+          <div className='loader'>
+          </div>
         </div>
       )
     }
