@@ -51,50 +51,50 @@ class ResultsPage extends Component {
   }
 
   renderImages = (questionId) => {
-      if(questionId==="ArCCjSAArQ"){
-        //Product assortment 
-        return './images/product_assortment.png'
-      }
-      if(questionId==="9oyGcxfnQj"){
-        //Team Management
-        return './images/team_man.png'
-      }
-      if(questionId==="V1KOIDXRuQ"){
-        //Role-based Access Control
-        return './images/role_based_ac.png'
-      }
-      if(questionId==="ZLoR6l06Hv"){
-        //Audit Logging 
-        return './images/audit_log.png'
-      }
-      if(questionId==="Wacop5KeeJ"){
-        //Deployment Options
-        return './images/deployment_options.png'
-      }
-      if(questionId==="xk2iGjzAFA"){
-        //SSO
-        return './images/single_sing_on.png'
-      }
-      if(questionId==="Z2mzLcVaqR"){
-        //Support/SLA
-        return './images/support.png'
-      }
-      if(questionId==="wxHCIAtokc"){
-        //Integrations 
-        return './images/integrations.png'
-      }
-      if(questionId==="fS10auu4Zj"){
-        //Change Management 
-        return './images/change_man.png'
-      }
-      if(questionId==="ELKRlzga1l"){
-        //Reporting
-        return './images/reporting.png'
-      }
-      if(questionId==="T2ocAbIjoL"){
-        //Security
-        return './images/security.png'
-      }
+    if (questionId === "ArCCjSAArQ") {
+      //Product assortment 
+      return './images/product_assortment.png'
+    }
+    if (questionId === "9oyGcxfnQj") {
+      //Team Management
+      return './images/team_man.png'
+    }
+    if (questionId === "V1KOIDXRuQ") {
+      //Role-based Access Control
+      return './images/role_based_ac.png'
+    }
+    if (questionId === "ZLoR6l06Hv") {
+      //Audit Logging 
+      return './images/audit_log.png'
+    }
+    if (questionId === "Wacop5KeeJ") {
+      //Deployment Options
+      return './images/deployment_options.png'
+    }
+    if (questionId === "xk2iGjzAFA") {
+      //SSO
+      return './images/single_sing_on.png'
+    }
+    if (questionId === "Z2mzLcVaqR") {
+      //Support/SLA
+      return './images/support.png'
+    }
+    if (questionId === "wxHCIAtokc") {
+      //Integrations 
+      return './images/integrations.png'
+    }
+    if (questionId === "fS10auu4Zj") {
+      //Change Management 
+      return './images/change_man.png'
+    }
+    if (questionId === "ELKRlzga1l") {
+      //Reporting
+      return './images/reporting.png'
+    }
+    if (questionId === "T2ocAbIjoL") {
+      //Security
+      return './images/security.png'
+    }
   }
 
   render() {
@@ -150,7 +150,7 @@ class ResultsPage extends Component {
                 {questions.map((question, index) => {
                   const selectedChoice = question.choices.find(c => c.isSelected)
                   return (
-                    <div className={'second-box question-id-' + question.id } key={question.id}>
+                    <div className={'second-box question-id-' + question.id} key={question.id}>
                       <div className='box-heading'>{question.text === 'Role-based Access Control' ? 'Role-based AC' : question.text}</div>
                       <div className='imgage-box'>
                         <div className='category-box-img '> </div>
@@ -183,7 +183,10 @@ class ResultsPage extends Component {
                         <p className='answer'> Your answer: </p>
                         <p className='answer'>{selectedChoice.text} </p>
                         <p className='recommendation'>{selectedChoice.recommendation}</p>
-
+                        <a className='learn-more' target='_blank' rel='noopener noreferrer' href='https://www.enterpriseready.io/features/product-assortment/'>
+                          <span>Learn More </span>
+                          <span className='learn-more-icon glyphicon glyphicon-chevron-right'></span>
+                        </a>
                       </Media.Body>
                     </div>
                   )

@@ -79,51 +79,53 @@ class QuestionPage extends Component {
     const assesmentId = this.props.match.params.assessmentId
     if (!this.props.data.loading) {
       const questions = this.props.data.assessment.questions;
+      const question = questions[this.state.questionIndex]
 
       if (this.state.questionIndex < questions.length) {
         return (
           <div>
             <Header />
-          <div className='question-page' >
-            <div className='question-box'>
-              <div className='question-img'> </div>
-              <h2>{questions[this.state.questionIndex].text}</h2>
-              <p> {questions[this.state.questionIndex].description}</p>
-              <p className='question'> {questions[this.state.questionIndex].question}</p>
-              <ListGroup>
-                {questions[this.state.questionIndex].choices.map((choice, index) => {
-                  const className = (choice.id === this.state.selectedChoice) ? 'selected' : '';
-                  return (
-                    <ListGroupItem
-                      className={className}
-                      key={index}
-                      onClick={() => this.selectChoice(choice.id)}>
-                      <div className='row'>
-                        <div className='col-md-1'>
-                          <span className='number'>{index + 1} </span>
+            <div className='question-page' >
+              <div className='question-box'>
+    
+                  <div className={'question-img question-id-' + question.id}> </div>
+                <h2>{question.text}</h2>
+                <p> {question.description}</p>
+                <p className='question'> {question.question}</p>
+                <ListGroup>
+                  {question.choices.map((choice, index) => {
+                    const className = (choice.id === this.state.selectedChoice) ? 'selected' : '';
+                    return (
+                      <ListGroupItem
+                        className={className}
+                        key={index}
+                        onClick={() => this.selectChoice(choice.id)}>
+                        <div className='row'>
+                          <div className='col-md-1'>
+                            <span className='number'>{index + 1} </span>
+                          </div>
+                          <div className='col-md-11'>{choice.text}</div>
                         </div>
-                        <div className='col-md-11'>{choice.text}</div>
-                      </div>
-                    </ListGroupItem>
-                  )
+                      </ListGroupItem>
+                    )
 
-                })}
-              </ListGroup>
-              <div>
-                {this.state.questionIndex > 0 &&
-                  <a className='question-previous' onClick={this.onPreviousClick}>
-                    <span className='prev-icon glyphicon glyphicon-chevron-left'></span>
-                    <span>Previous</span>
+                  })}
+                </ListGroup>
+                <div>
+                  {this.state.questionIndex > 0 &&
+                    <a className='question-previous' onClick={this.onPreviousClick}>
+                      <span className='prev-icon glyphicon glyphicon-chevron-left'></span>
+                      <span>Previous</span>
+                    </a>
+                  }
+                  <a className='question-next' onClick={this.onNextClick}>
+                    <span> {this.state.questionIndex < questions.length - 1 ? 'Next' : 'See Results'} </span>
+                    <span className='next-icon glyphicon glyphicon-chevron-right'></span>
                   </a>
-                }
-                <a className='question-next' onClick={this.onNextClick}>
-                  <span> {this.state.questionIndex < questions.length - 1 ? 'Next' : 'See Results'} </span>
-                  <span className='next-icon glyphicon glyphicon-chevron-right'></span>
-                </a>
+                </div>
               </div>
             </div>
-          </div>
-          <Footer />
+            <Footer />
           </div>
         )
       } else {
