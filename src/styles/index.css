@@ -582,4 +582,41 @@ button.list-group-item:hover {
   .loading-page {
     margin-top: 150px;
   }
+
+  .results-page {
+    width: 100%;
+    padding: 20px;
+    background-color: #FFF;
+  }
+
+  .individual-result {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    text-align:center;
+    padding-right:0px;
+    padding-left: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .category-box-img {
+    float: left;
+    background-size: 100%;
+    width: 66px;
+    height: 32px;
+  }
+  
+  .category-img {
+    background-size: 100px auto;
+    width: 100px;
+    height: 120px;
+  }
+
+  .results-page h1 {
+    font-weight: 700;
+    font-size: 32px;
+    text-align: left;
+  }
 }
