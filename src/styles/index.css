@@ -94,7 +94,7 @@ body {
   font-weight: bold;
 }
 
-.list-group button {
+.list-group-item {
   padding: 15px;
   font-size: 14px;
   line-height: 1.4em;
@@ -135,6 +135,11 @@ button.list-group-item:hover {
   display: block;
   margin: 0 auto;
   padding: 10px 0px 0px 7px;
+}
+
+.question-page .selected .number{
+  background: #73A3CD;
+  color: white;  
 }
 
 .question-page a {
@@ -399,4 +404,20 @@ button.list-group-item:hover {
   fill: #EE5042 !important;
   stroke: #EE5042 !important;
   opacity: 1 !important;
+}
+
+
+@media (max-width: 768px) {
+  .question-box {
+    width: 100%;
+  }
+
+  .question-page .number {
+    float: left;
+    margin-right: 12px;
+  }
+
+  .loading-page {
+    margin-top: 150px;
+  }
 }

@@ -79,6 +79,7 @@ class QuestionPage extends Component {
       if (this.state.questionIndex < questions.length) {
         return (
           <div className='question-page' >
+
             <div className='question-box'>
               <div className='questionImg'> </div>
               <h2>{questions[this.state.questionIndex].text}</h2>
