@@ -2,13 +2,16 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  overflow: scroll
+  overflow: scroll;
+  background-color: #012E4B;
 }
  
 header {
   padding: 20px 60px;
   height: 74px;
   border-bottom: 2px solid #C8C8C8;
+  background-color: #FFF;
+
 }
 
 header div {
@@ -45,20 +48,17 @@ footer div {
 
 /*------HOME PAGE------*/
 
-.fixed-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #012E4B;
-  padding: 10px 16px;
-  height: 86px;
+.content {
+  background-color: #FFF;
 }
+
 .home-page {
   padding-top: 120px;
   text-align: center;
   max-width: 740px;
   display: block;
   margin: 0 auto;
+  padding-bottom: 120px;
 }
 
 .home-page-box {
@@ -109,13 +109,13 @@ footer div {
 }
 
 /*------QUESTION PAGE------*/
-
 .question-page {
   max-width: 1086px;
   height: 100%;
   text-align: center;
   display: block;
   margin: 0 auto;
+  padding-top: 50px;
 }
 
 .question-box {
@@ -126,7 +126,7 @@ footer div {
   padding: 50px;
   border: solid #DFDFDF 1px;
   border-radius: 8px;
-  margin-top: 50px;
+  padding-top: 50px;
   box-sizing: border-box;
   margin-bottom: 50px;
 }
@@ -299,6 +299,11 @@ button.list-group-item:hover {
   box-sizing: border-box;
 }
 
+.second-box:hover  {
+  background: #F4F8FB;
+  border: 1px #73A3CD solid;
+}
+
 .image-box {
   margin-top: 10px;
 }
@@ -430,7 +435,7 @@ button.list-group-item:hover {
   max-width: 1000px;
   display: block;
   margin: 0 auto;
-  margin-bottom: 50px;
+  padding-bottom: 50px;
   text-align:center;
   padding-right:20px;
   padding-left:100px
@@ -526,6 +531,7 @@ button.list-group-item:hover {
 
 .learn-more:hover {
   text-decoration: none;
+  cursor: pointer;
 }
 
 /*------LOADER------*/

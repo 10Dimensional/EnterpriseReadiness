@@ -50,52 +50,53 @@ class ResultsPage extends Component {
     return Math.floor(sum / questions.length)
   }
 
-  renderImages = (questionId) => {
-    if (questionId === "ArCCjSAArQ") {
+  getLinkLearnMore = (id) => {
+    if (id === "ArCCjSAArQ") {
       //Product assortment 
-      return './images/product_assortment.png'
+      return 'https://www.enterpriseready.io/features/product-assortment/';
     }
-    if (questionId === "9oyGcxfnQj") {
+    if (id === "9oyGcxfnQj") {
       //Team Management
-      return './images/team_man.png'
+      return 'https://www.enterpriseready.io/features/team-management';
     }
-    if (questionId === "V1KOIDXRuQ") {
+    if (id === "V1KOIDXRuQ") {
       //Role-based Access Control
-      return './images/role_based_ac.png'
+      return 'https://www.enterpriseready.io/features/role-based-access-control';
     }
-    if (questionId === "ZLoR6l06Hv") {
+    if (id === "ZLoR6l06Hv") {
       //Audit Logging 
-      return './images/audit_log.png'
+      return 'https://www.enterpriseready.io/features/audit-log/';
     }
-    if (questionId === "Wacop5KeeJ") {
+    if (id === "Wacop5KeeJ") {
       //Deployment Options
-      return './images/deployment_options.png'
+      return 'https://www.enterpriseready.io/features/product-assortment/';
     }
-    if (questionId === "xk2iGjzAFA") {
+    if (id === "xk2iGjzAFA") {
       //SSO
-      return './images/single_sing_on.png'
+      return 'https://www.enterpriseready.io/features/single-sign-on/';
     }
-    if (questionId === "Z2mzLcVaqR") {
+    if (id === "Z2mzLcVaqR") {
       //Support/SLA
-      return './images/support.png'
+      return 'https://www.enterpriseready.io/features/support/';
     }
-    if (questionId === "wxHCIAtokc") {
+    if (id === "wxHCIAtokc") {
       //Integrations 
-      return './images/integrations.png'
+      return 'https://www.enterpriseready.io/features/integrations/';
     }
-    if (questionId === "fS10auu4Zj") {
+    if (id === "fS10auu4Zj") {
       //Change Management 
-      return './images/change_man.png'
+      return 'https://www.enterpriseready.io/features/change-management';
     }
-    if (questionId === "ELKRlzga1l") {
+    if (id === "ELKRlzga1l") {
       //Reporting
-      return './images/reporting.png'
+      return 'https://www.enterpriseready.io/features/advanced-reporting/';
     }
-    if (questionId === "T2ocAbIjoL") {
+    if (id === "T2ocAbIjoL") {
       //Security
-      return './images/security.png'
+      return 'https://www.enterpriseready.io/features/product-security/';
     }
   }
+
 
   render() {
     if (!this.props.data.loading) {
@@ -103,6 +104,7 @@ class ResultsPage extends Component {
       return (
         <div>
           <Header />
+          <div className='content'>
           <div className='results-page'>
             <div className='overview'>
               <div className='svg'>
@@ -120,7 +122,6 @@ class ResultsPage extends Component {
                       key: 'res',
                       values: questions.reduce((result, question) => {
                         const selectedChoice = question.choices.find(c => c.isSelected)
-                        console.log(choicePointScore(selectedChoice))
                         return Object.assign(result, { [question.id]: choicePointScore(selectedChoice) })
                       }, {})
                     }]
@@ -152,7 +153,7 @@ class ResultsPage extends Component {
                   return (
                     <div className={'second-box question-id-' + question.id} key={question.id}>
                       <div className='box-heading'>{question.text === 'Role-based Access Control' ? 'Role-based AC' : question.text}</div>
-                      <div className='imgage-box'>
+                      <div className='image-box'>
                         <div className='category-box-img '> </div>
                         <span className={'score-' + scoreLabel(choicePointScore(selectedChoice))}>
                           {scoreLabel(choicePointScore(selectedChoice))}
@@ -183,7 +184,7 @@ class ResultsPage extends Component {
                         <p className='answer'> Your answer: </p>
                         <p className='answer'>{selectedChoice.text} </p>
                         <p className='recommendation'>{selectedChoice.recommendation}</p>
-                        <a className='learn-more' target='_blank' rel='noopener noreferrer' href='https://www.enterpriseready.io/features/product-assortment/'>
+                        <a className='learn-more' target='_blank' href={this.getLinkLearnMore(question.id)}>
                           <span>Learn More </span>
                           <span className='learn-more-icon glyphicon glyphicon-chevron-right'></span>
                         </a>
@@ -194,8 +195,10 @@ class ResultsPage extends Component {
               </Media>
             </div>
           </div>
+          </div>
           <Footer />
         </div>
+
       )
     } else {
       return (

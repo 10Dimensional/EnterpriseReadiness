@@ -31,16 +31,18 @@ class HomePage extends Component {
     if (!this.state.assessmentId) {
       return (
         <div>
-        <Header />
-        <div className='home-page' >
-          <div className='home-page-box'>
-            <div className='home-image'> </div>
-            <h1>Is your app EnterpriseReady?</h1>
-            <p> Take this self assessment to see how ready your application is for enterprise adoption.</p>
-            <button onClick={this.onTakeAssesmentClick}>Take Assessment</button>
+          <Header />
+          <div className='content'>
+            <div className='home-page' >
+              <div className='home-page-box'>
+                <div className='home-image'> </div>
+                <h1>Is your app EnterpriseReady?</h1>
+                <p> Take this self assessment to see how ready your application is for enterprise adoption.</p>
+                <button onClick={this.onTakeAssesmentClick}>Take Assessment</button>
+              </div>
+            </div>
           </div>
-        </div>
-        <Footer isFixed={true}/>
+          <Footer />
         </div>
       )
     } else {
