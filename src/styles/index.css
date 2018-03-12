@@ -58,7 +58,7 @@ footer div {
   max-width: 600px;
   display: block;
   margin: 0 auto;
-  padding-bottom: 120px;
+  padding-bottom: 200px;
   height: 100%;
 }
 
@@ -191,7 +191,7 @@ button.list-group-item:hover {
   font-weight: bold;
   display: block;
   margin: 0 auto;
-  padding: 10px 0px 0px 7px;
+  padding: 10.5px 0px 0px 7px;
 }
 
 .question-page .selected .number{

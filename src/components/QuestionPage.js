@@ -3,6 +3,7 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Redirect } from "react-router-dom";
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import LoadingPage from './LoadingPage';
 
 const assessment = gql`
   query assessment($assessmentId: String!) {
@@ -126,10 +127,7 @@ class QuestionPage extends Component {
       }
     } else {
       return (
-        <div className='loading-page' >
-          <div className='loader'>
-          </div>
-        </div>
+       <LoadingPage />
       )
     }
   }
