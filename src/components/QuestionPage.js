@@ -73,6 +73,8 @@ class QuestionPage extends Component {
     this.setState({ selectedChoice: id })
   }
 
+
+
   render() {
     const assesmentId = this.props.match.params.assessmentId
     if (!this.props.data.loading) {
@@ -84,7 +86,7 @@ class QuestionPage extends Component {
             <Header />
           <div className='question-page' >
             <div className='question-box'>
-              <div className='questionImg'> </div>
+              <div className='question-img'> </div>
               <h2>{questions[this.state.questionIndex].text}</h2>
               <p> {questions[this.state.questionIndex].description}</p>
               <p className='question'> {questions[this.state.questionIndex].question}</p>
@@ -109,14 +111,14 @@ class QuestionPage extends Component {
               </ListGroup>
               <div>
                 {this.state.questionIndex > 0 &&
-                  <a className='prev' onClick={this.onPreviousClick}>
-                    <span className='prevIcon glyphicon glyphicon-chevron-left'></span>
+                  <a className='question-previous' onClick={this.onPreviousClick}>
+                    <span className='prev-icon glyphicon glyphicon-chevron-left'></span>
                     <span>Previous</span>
                   </a>
                 }
-                <a className='next' onClick={this.onNextClick}>
+                <a className='question-next' onClick={this.onNextClick}>
                   <span> {this.state.questionIndex < questions.length - 1 ? 'Next' : 'See Results'} </span>
-                  <span className='nextIcon glyphicon glyphicon-chevron-right'></span>
+                  <span className='next-icon glyphicon glyphicon-chevron-right'></span>
                 </a>
               </div>
             </div>

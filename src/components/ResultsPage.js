@@ -31,7 +31,6 @@ function choicePointScore(choice) {
 }
 
 
-
 function scoreLabel(score) {
   return String.fromCharCode('A'.charCodeAt(0) + 4 - score);
 }
@@ -49,6 +48,53 @@ class ResultsPage extends Component {
     }
 
     return Math.floor(sum / questions.length)
+  }
+
+  renderImages = (questionId) => {
+      if(questionId==="ArCCjSAArQ"){
+        //Product assortment 
+        return './images/product_assortment.png'
+      }
+      if(questionId==="9oyGcxfnQj"){
+        //Team Management
+        return './images/team_man.png'
+      }
+      if(questionId==="V1KOIDXRuQ"){
+        //Role-based Access Control
+        return './images/role_based_ac.png'
+      }
+      if(questionId==="ZLoR6l06Hv"){
+        //Audit Logging 
+        return './images/audit_log.png'
+      }
+      if(questionId==="Wacop5KeeJ"){
+        //Deployment Options
+        return './images/deployment_options.png'
+      }
+      if(questionId==="xk2iGjzAFA"){
+        //SSO
+        return './images/single_sing_on.png'
+      }
+      if(questionId==="Z2mzLcVaqR"){
+        //Support/SLA
+        return './images/support.png'
+      }
+      if(questionId==="wxHCIAtokc"){
+        //Integrations 
+        return './images/integrations.png'
+      }
+      if(questionId==="fS10auu4Zj"){
+        //Change Management 
+        return './images/change_man.png'
+      }
+      if(questionId==="ELKRlzga1l"){
+        //Reporting
+        return './images/reporting.png'
+      }
+      if(questionId==="T2ocAbIjoL"){
+        //Security
+        return './images/security.png'
+      }
   }
 
   render() {
@@ -82,7 +128,7 @@ class ResultsPage extends Component {
                 />
               </div>
 
-              <div className='ov-text'>
+              <div className='overview-text'>
                 <div>
                   <span className={'circle-score-' + scoreLabel(this.finalScore())}> {scoreLabel(this.finalScore())} </span>
                   <h1> Here is your EnterpriseGrade </h1>
@@ -104,11 +150,10 @@ class ResultsPage extends Component {
                 {questions.map((question, index) => {
                   const selectedChoice = question.choices.find(c => c.isSelected)
                   return (
-                    <div className='second-box' key={question.id}>
-                      <div className='box-heading'>{question.text === 'Role-based Access Control' ? 'Role-based AC' :
-                        question.text}</div>
-                      <div className='imgBox'>
-                        <div className='categoryBoxImg'> </div>
+                    <div className={'second-box question-id-' + question.id } key={question.id}>
+                      <div className='box-heading'>{question.text === 'Role-based Access Control' ? 'Role-based AC' : question.text}</div>
+                      <div className='imgage-box'>
+                        <div className='category-box-img '> </div>
                         <span className={'score-' + scoreLabel(choicePointScore(selectedChoice))}>
                           {scoreLabel(choicePointScore(selectedChoice))}
                         </span>
@@ -124,9 +169,9 @@ class ResultsPage extends Component {
                 {questions.map((question, index) => {
                   const selectedChoice = question.choices.find(c => c.isSelected)
                   return (
-                    <div key={question.id}>
+                    <div key={question.id} className={'question-id-' + question.id}>
                       <Media.Left>
-                        <div className='categoryImg' />
+                        <div className='category-img' />
                       </Media.Left>
                       <Media.Body>
                         <Media.Heading>

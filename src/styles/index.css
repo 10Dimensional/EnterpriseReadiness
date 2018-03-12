@@ -131,7 +131,7 @@ footer div {
   margin-bottom: 50px;
 }
 
-.questionImg {
+.question-img {
   background: url('./images/category.png') no-repeat;
   background-size: 100%;
   display: block;
@@ -212,7 +212,15 @@ button.list-group-item:hover {
   text-decoration:  none;
 }
 
-.nextIcon {
+.question-next {
+  float: right;
+}
+
+.question-previous {
+  float: left
+}
+
+.next-icon {
   font-weight: bold;
   font-weight: 500;
   padding-left:10px;
@@ -220,20 +228,12 @@ button.list-group-item:hover {
   margin-top: 20px;
 }
 
-.prevIcon {
+.prev-icon {
   font-weight: bold;
   font-weight: 500;
   padding-right:10px;
   display: inline;
   margin-top: 20px;
-}
-
-.next {
-  float: right;
-}
-
-.prev {
-  float: left
 }
 
 /*------RESULTS PAGE------*/
@@ -245,7 +245,7 @@ button.list-group-item:hover {
   margin: 0 auto;
 }
 
-.ov-text {
+.overview-text {
   padding-top: 100px;
 }
 
@@ -298,16 +298,84 @@ button.list-group-item:hover {
   box-sizing: border-box;
 }
 
-.imgBox {
+.image-box {
   margin-top: 10px;
 }
 
-.categoryBoxImg {
+.category-box-img {
   float: left;
-  background:url('./images/category.png') no-repeat;
   background-size: 100%;
   width: 86px;
   height: 42px;
+}
+
+.category-img {
+  background:url('./images/B_product_as.png') no-repeat;
+  background-size: 160px auto;
+  width: 200px;
+  height: 200px;
+  margin-right: 30px;
+  margin-top: 50px;
+}
+
+.question-id-ArCCjSAArQ .category-box-img {
+  background:url('./images/s_product_as.png') no-repeat;
+}
+
+.question-id-9oyGcxfnQj .category-box-img {
+  background:url('./images/team_man.png') no-repeat;
+}
+
+.question-id-V1KOIDXRuQ .category-box-img {
+  background:url('./images/s_rbac.png') no-repeat;
+}
+
+.question-id-ZLoR6l06Hv .category-box-img {
+  background:url('./images/audit_log.png') no-repeat;
+}
+
+.question-id-Wacop5KeeJ .category-box-img {
+  background:url('./images/s_deployment_opt.png') no-repeat;
+}
+
+.question-id-xk2iGjzAFA .category-box-img {
+  background:url('./images/s_sso.png') no-repeat;
+}
+
+.question-id-Z2mzLcVaqR .category-box-img {
+  background:url('./images/support.png') no-repeat;
+}
+
+.question-id-wxHCIAtokc .category-box-img {
+  background:url('./images/integrations.png') no-repeat;
+}
+
+.question-id-fS10auu4Zj .category-box-img {
+  background:url('./images/change_man.png') no-repeat;
+}
+
+.question-id-ELKRlzga1l .category-box-img {
+  background:url('./images/reporting.png') no-repeat;
+}
+
+.question-id-T2ocAbIjoL .category-box-img {
+  background:url('./images/security.png') no-repeat;
+}
+
+.question-id-ArCCjSAArQ .category-img {
+  background:url('./images/B_product_as.png') no-repeat;
+}
+
+.question-id-xk2iGjzAFA .category-img {
+  background:url('./images/B_SSO.png') no-repeat;
+}
+
+.question-id-Wacop5KeeJ .category-img {
+  background:url('./images/B_deployment_opt.png') no-repeat;
+}
+
+.question-id-V1KOIDXRuQ .category-img {
+  background:url('./images/B_RBAC.png') no-repeat;
 }
 
 .second-box span {
@@ -335,15 +403,6 @@ button.list-group-item:hover {
   color: #9B9B9B;
   line-height: 1.4;
   font-size: 18px;
-}
-
-.categoryImg {
-  background: url('./images/category.png') right center no-repeat;
-  background-size: 160px auto;
-  width: 200px;
-  height: 200px;
-  margin-right: 30px;
-  margin-top: 30px;
 }
 
 .individual-result {
@@ -379,7 +438,7 @@ button.list-group-item:hover {
   margin-left: 10px;
 }
 
-.ov-text span {
+.overview-text span {
   float: right;
   position: relative;
   width: 82px;
