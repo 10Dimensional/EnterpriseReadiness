@@ -45,6 +45,14 @@ footer div {
 
 /*------HOME PAGE------*/
 
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #012E4B;
+  padding: 10px 16px;
+  height: 86px;
+}
 .home-page {
   padding-top: 120px;
   text-align: center;

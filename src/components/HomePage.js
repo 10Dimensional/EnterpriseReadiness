@@ -40,7 +40,7 @@ class HomePage extends Component {
             <button onClick={this.onTakeAssesmentClick}>Take Assessment</button>
           </div>
         </div>
-        <Footer />
+        <Footer isFixed={true}/>
         </div>
       )
     } else {
